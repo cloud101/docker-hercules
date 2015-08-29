@@ -4,23 +4,18 @@ MAINTAINER Lucas Kauffman
 #Install dependencies
 RUN apt-get update && apt-get install -y build-essential  \ 
   curl  \ 
- git    \ 
-  m4   \ 
-  ruby   \ 
-  texinfo   \ 
-  libbz2-dev   \ 
-  libcurl4-openssl-dev   \ 
-  libexpat-dev   \ 
-  libncurses-dev   \ 
-  zlib1g-dev  \
+  git    \ 
   libtool \ 
   automake \ 
   autoconf \
+ libbz2-dev   \ 
+  libcurl4-openssl-dev   \ 
+  libexpat-dev   \ 
+  zlib1g-dev  \
   libregina3-dev
 
 RUN git clone https://github.com/hercules-390/hyperion.git
 WORKDIR hyperion
-RUN ls
 RUN ./autogen.sh
 RUN        ./configure --enable-cckd-bzip2 --enable-regina-rexx
 RUN        make
